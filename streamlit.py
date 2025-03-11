@@ -10,7 +10,7 @@ st.set_page_config( layout="wide", page_title = "Campus Care", page_icon= '../st
 def charger_csv(lien):
     return pd.read_csv(lien)
 
-X_final = charger_csv("../donnees/nettoyees/df_encode_ml.csv")
+X_final = charger_csv("./donnees/nettoyees/df_encode_ml.csv")
 
 @st.cache_data
 def pickl_listes(lien):
@@ -21,7 +21,7 @@ def pickl_listes(lien):
         alim = pickle.load(f)
     return villes, etudes, sommeil, alim
 
-villes, etudes, sommeil, alim = pickl_listes("../donnees/nettoyees/mes_listes.pkl")
+villes, etudes, sommeil, alim = pickl_listes("./donnees/nettoyees/mes_listes.pkl")
 
 @st.cache_data
 def pickl_ml(lien):
@@ -31,7 +31,7 @@ def pickl_ml(lien):
     model = modeles['LogisticRegression']
     return SN, model
 
-SN, model = pickl_ml("../donnees/nettoyees/mes_modeles.pkl")
+SN, model = pickl_ml("./donnees/nettoyees/mes_modeles.pkl")
 
 @st.cache_resource
 def encodage_predict(df_a_predire):
@@ -70,7 +70,7 @@ def booleen(x):
         return False
 
 with st.sidebar:
-    st.sidebar.image('../streamlit/CampusCare.webp', use_container_width=True)
+    st.sidebar.image('./streamlit/CampusCare.webp', use_container_width=True)
     st.markdown(
     """
     <style> 
@@ -127,7 +127,7 @@ if page == "Accueil":
 
         N'hésitez pas à contacter ces ressources en cas de besoin. Nous sommes ici pour vous aider à prendre soin de vous.
         """)
-    st.image('../streamlit/accueil.jpg', use_container_width=True)
+    st.image('./streamlit/accueil.jpg', use_container_width=True)
 
 if page == "Calculateur de risque":
     st.markdown("<h1 style='text-align: center;'>🧠 Risquez vous la dépression ? 🧠</h1>", unsafe_allow_html=True)
@@ -201,14 +201,14 @@ if page == "Statistiques":
     
     col1, col2, col3 = st.columns([2, 10, 2])
     with col2:
-        st.image('..\images\dashboard.png', use_container_width=True)
+        st.image('.\images\dashboard.png', use_container_width=True)
     
 
 
     col1, col2 = st.columns(2)
 
     with col1:
-        st.image('../streamlit/depressifs.png')
+        st.image('./streamlit/depressifs.png')
 
     with col2:
         
@@ -240,14 +240,14 @@ if page == "Statistiques":
 
 
     with col2:
-        st.image('../streamlit/sommeil.png')
+        st.image('./streamlit/sommeil.png')
 
 
 
     col1, col2 = st.columns(2)
 
     with col1:
-        st.image('../streamlit/alimentation.png')
+        st.image('./streamlit/alimentation.png')
 
 
     with col2:
@@ -281,12 +281,12 @@ if page == "Statistiques":
 
 
     with col2:
-        st.image('../streamlit/pression.png')
+        st.image('./streamlit/pression.png')
 
     col1, col2 = st.columns(2)
 
     with col1:
-        st.image('../streamlit/suicide.png')
+        st.image('./streamlit/suicide.png')
 
 
 
@@ -320,7 +320,7 @@ if page == "Statistiques":
 
 
     with col2:
-        st.image('../streamlit/map.png')
+        st.image('./streamlit/map.png')
 
 
         
